@@ -4,7 +4,12 @@
 FROM mcr.microsoft.com/devcontainers/miniconda:0-3 AS miniconda
 
 # https://docs.docker.com/build/building/multi-stage/#use-an-external-image-as-a-stage
+
+# copy terraform to container
 COPY --from=hashicorp/terraform:latest /bin/terraform /usr/local/bin/terraform
+
+# copy kubectl to container
+COPY --from=bitnami/kubectl:latest /opt/bitnami/kubectl/bin/kubectl /usr/local/bin/kubectl
 
 # [Choice] Node.js version: none, lts/*, 16, 14, 12, 10
 ARG NODE_VERSION="none"
