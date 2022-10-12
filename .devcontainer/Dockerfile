@@ -11,6 +11,9 @@ COPY --from=hashicorp/terraform:latest /bin/terraform /usr/local/bin/terraform
 # copy kubectl to container
 COPY --from=bitnami/kubectl:latest /opt/bitnami/kubectl/bin/kubectl /usr/local/bin/kubectl
 
+# copy azure cli to container
+# COPY --from=mcr.microsoft.com/azure-cli:latest /usr/local/bin/az /usr/local/bin/az
+
 # [Choice] Node.js version: none, lts/*, 16, 14, 12, 10
 ARG NODE_VERSION="none"
 RUN if [ "${NODE_VERSION}" != "none" ]; then su vscode -c "umask 0002 && . /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSION} 2>&1"; fi
