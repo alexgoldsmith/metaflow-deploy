@@ -33,12 +33,18 @@
 				"ms-python.python",
 				"ms-python.vscode-pylance",
 				"GitHub.copilot",
-				"redhat.vscode-yaml"
+				"redhat.vscode-yaml",
+				"HashiCorp.terraform"
 			]
 		}
 	},
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
+	"forwardPorts": [
+		8080,
+		8083,
+		3000,
+		9090,
+	],
 	"postStartCommand": [
 		"echo",
 		"container started"
